@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --clr-bg: #222831;
+    --clr-bg-secondary: #31363F;
+    --clr-text-primary: #EEEEEE;
+    --clr-text-secondary: #76ABAE;
+    --clr-text-inputs: lightgrey;
+    --clr-primary: #76ABAE;
+
+    --ff-primary: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--ff-primary);
+}
+
+body {
+    background-color: var(--clr-bg);
+
+}

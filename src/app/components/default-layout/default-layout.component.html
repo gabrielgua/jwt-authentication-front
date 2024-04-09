@@ -1,1 +1,22 @@
-<p>default-layout works!</p>
+<main>
+    <section class="title">
+        <h1 class="title__text">
+            JWT <span class="title__span"><i>authentication</i></span> 
+        </h1>
+        <hr class="title__bar">
+    </section>
+    <div class="form__wrapper">
+        <section class="form">
+            <p class="form__title">{{ title }}</p>
+            <ng-content></ng-content>
+        </section>
+        <section class="actions">
+            <button class="actions__button">{{ primaryBtnText }}</button>
+            <div class="actions__divider">
+                <hr class="actions__bar">
+                <p class="actions__text">OR</p>
+            </div>
+            <button class="actions__button actions__button--outlined">{{ secondaryBtnText }}</button>
+        </section>
+    </div>
+</main>

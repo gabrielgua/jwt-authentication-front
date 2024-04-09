@@ -1,0 +1,14 @@
+<section class="group">
+    <label class="group__label" [for]="name">{{ label }}</label>
+    <div class="group__content">
+        <input class="group__content__input" 
+            [id]="name"  
+            [type]="type" 
+            [value]="value" 
+            [placeholder]="placeholder" 
+        >
+        <div class="group__content__icon">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</section>
