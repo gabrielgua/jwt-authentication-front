@@ -2,9 +2,14 @@
     --clr-bg: #222831;
     --clr-bg-secondary: #31363F;
     --clr-text-primary: #EEEEEE;
-    --clr-text-secondary: #76ABAE;
+
+    --clr-text-secondary: rgb(118, 171, 174, .4);
+    /* --clr-text-secondary: #757575; */
+    --clr-text-accent: #76abae;
     --clr-text-inputs: lightgrey;
     --clr-primary: #76ABAE;
+    --clr-primary--hover: rgb(129, 189, 192);
+
 
     --ff-primary: 'Poppins', sans-serif;
 }

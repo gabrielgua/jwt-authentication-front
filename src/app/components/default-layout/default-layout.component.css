@@ -3,43 +3,52 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
     height: 100dvh;
+    gap: 3rem;
     color: var(--clr-text-primary);
     
     background-color: var(--clr-bg);
     
 }
 
-.title {
-    width: 100%;
+.header {
+    width: min(450px, 100% - 5rem);
+}
+
+.header__title {
     text-align: center;
     position: relative;
     display: grid;
     place-items: center;
 }
 
-.title__text {
+.header__title__text {
     font-size: 32px;
     font-weight: normal;
     z-index: 1;
     background-color: var(--clr-bg);
-    padding-inline: 1.5rem;
+    padding-inline-end: 1.5rem;
+    place-self: start;
 }
 
-.title__bar {
+.header__title__bar {
     position: absolute;
     width: 100%;
     opacity: .05;
 }
 
-.title__span {
-    color: var(--clr-text-secondary);
+.header__title__span {
+    color: var(--clr-text-accent);
     font-weight: bold;
 }
 
+.header__subtitle {
+    font-size: small;
+    color: var(--clr-text-secondary);
+}
+
 .form__wrapper {
-    width: min(500px, 100% - 5rem);
+    width: min(450px, 100% - 5rem);
     margin-inline: auto;
     padding: 1rem;
     display: flex;
@@ -66,7 +75,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
 }
 
 .actions__button {
@@ -76,12 +84,22 @@ main {
     background-color: var(--clr-primary);    
     cursor: pointer;
     border-radius: .5rem;
+    transition: all 100ms ease;
+}
+
+.actions__button:hover {
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1);
+    background-color: var(--clr-primary--hover);
 }
 
 .actions__button--outlined {
     border: 1px solid var(--clr-primary);
-    color: var(--clr-text-secondary);
+    color: var(--clr-text-accent);
     background-color: transparent;
+}
+
+.actions__button--outlined:hover {
+    color: black;
 }
 
 .actions__divider {

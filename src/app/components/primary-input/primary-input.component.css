@@ -28,6 +28,17 @@
     color: var(--clr-text-inputs);
 }
 
+.group__content__input::placeholder{
+    color: var(--clr-text-secondary);
+    opacity: 1;
+}
+
+.group__content__input::-ms-input-placeholder{
+    color: var(--clr-text-secondary);
+}
+
+
+
 .group__content__input:focus {
     outline: none;
 }
