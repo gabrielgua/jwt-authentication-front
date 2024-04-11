@@ -3,10 +3,24 @@
     primaryBtnText="Create your account"
     secondaryBtnText="Login now"
     (navigate)="navigate()"
+    (submit)="submit()"
     [disablePrimaryBtn]="registerForm.invalid"
 >
 
     <form [formGroup]="registerForm">
+        <app-message 
+            class="error"
+            [show]="error"
+            [text]="errorMessage"
+            type="icon-only"
+        ></app-message>
+
+        <app-message 
+            class="success"
+            [show]="success"
+            [text]="successMessage"
+            type="icon-only"
+        ></app-message>
 
         <app-primary-input
             formControlName="name"

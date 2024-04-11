@@ -4,20 +4,30 @@ import { PrimaryInputComponent } from "../../components/primary-input/primary-in
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Validation from '../../validation/validation';
+import { RegisterService } from '../../services/register.service';
+import { AuthResponse } from '../../types/auth-response.type';
+import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { MessageComponent } from "../../components/message/message.component";
 
 @Component({
     selector: 'app-register',
     standalone: true,
     templateUrl: './register.component.html',
     styleUrl: './register.component.css',
-    imports: [DefaultLayoutComponent, PrimaryInputComponent, ReactiveFormsModule]
+    imports: [DefaultLayoutComponent, PrimaryInputComponent, ReactiveFormsModule, MessageComponent]
 })
 export class RegisterComponent {
 
     registerForm!: FormGroup;
+    error: boolean = false;
+    errorMessage: string = '';
+
+    success: boolean = false;
+    successMessage: string = 'Your account was successfully created.';
 
     constructor(
         private router: Router,
+        private service: RegisterService
     ) {
         this.registerForm = new FormGroup({
             name: new FormControl('', [Validators.required]),
@@ -47,6 +57,39 @@ export class RegisterComponent {
 
     isInvalid(control: AbstractControl): boolean {
         return control.dirty && control.invalid;
+    }
+
+    submit() {
+        this.success = false;
+        this.error = false;
+
+        if (this.registerForm.invalid) {
+            return;
+        }
+
+
+        this.service.register(this.registerForm.value.name, this.registerForm.value.email, this.registerForm.value.password).subscribe({
+            next: (res) => this.handleSuccess(res),
+            error: (err) => this.handleError(err)
+        })
+
+        this.resetForm();
+    }
+
+    handleSuccess(res: AuthResponse) {
+        this.success = true;
+        console.log(res);
+    }
+
+    handleError(err: HttpErrorResponse) {
+        if (err.status === 0) {
+            this.errorMessage = 'The server may be offline, try again later.';
+        }
+        this.error = !!err;
+    }
+
+    resetForm() {
+        this.registerForm.reset();
     }
 
     navigate() {
