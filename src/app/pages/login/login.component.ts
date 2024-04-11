@@ -30,7 +30,7 @@ export class LoginComponent {
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 
@@ -96,6 +96,23 @@ export class LoginComponent {
     let errors = [];
     if (this.password?.errors?.['required']) {
       errors.push('Password is required.')
+    }
+
+    if (this.password?.errors?.['minlength']) {
+      errors.push('Password has to be greater than 6 characters.')
+    }
+
+    return errors;
+  }
+
+  confirmPasswordErrors(): string[] {
+    let errors = [];
+    if (this.password?.errors?.['required']) {
+      errors.push('Password is required.')
+    }
+
+    if (this.password?.errors?.['differs']) {
+      errors.push('Passwords do not match.')
     }
     return errors;
   }
