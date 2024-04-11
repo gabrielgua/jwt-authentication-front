@@ -5,7 +5,7 @@ import { DefaultLayoutComponent } from '../../components/default-layout/default-
 import { MessageComponent } from "../../components/message/message.component";
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { LoginService } from '../../services/login.service';
-import { LoginResponse } from '../../types/login-response.type';
+import { AuthResponse } from '../../types/auth-response.type';
 
 @Component({
     selector: 'app-login',
@@ -58,7 +58,7 @@ export class LoginComponent {
   }
 
 
-  private handleSuccess(response: LoginResponse) {
+  private handleSuccess(response: AuthResponse) {
     console.log('Login feito com sucesso');
     console.log(response);    
   }

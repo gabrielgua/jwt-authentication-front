@@ -6,16 +6,16 @@ import { tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class RegisterService {
 
   API_AUTH_URL = 'http://localhost:8080/auth';
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string) {
-    return this.http.post<AuthResponse>(`${this.API_AUTH_URL}/login`, {email, password})  
+  register(name: string, email: string, password: string) {
+    return this.http.post<AuthResponse>(`${this.API_AUTH_URL}/register`, {name, email, password})
       .pipe(
-        tap(response => sessionStorage.setItem('access_token', response.accessToken))
-      )
+        tap((res) => sessionStorage.setItem('access_token', res.accessToken))
+      );
   }
 }
