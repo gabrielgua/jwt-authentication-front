@@ -2,14 +2,27 @@
     [title]="'Login into your account'"
     [primaryBtnText]="'Login now'"
     [secondaryBtnText]="'Create an account'"
+    [disablePrimaryBtn]="loginForm.invalid"
+    (submit)="submit()"
+    
+
 >
     <form [formGroup]="loginForm">
+        <app-message 
+            class="error" 
+            type="icon-only" 
+            text="Incorrect credentials, plase check and try again." 
+            [show]="error">
+        </app-message>
+
         <app-primary-input
             formControlName="email"
             label="Email"
             type="email"
-            placeholder="email@exemplo.com"
+            placeholder="Enter your email"
             name="email"
+            [error]="isInvalid(email!)"
+            [errorMessages]="emailErrors()"
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -22,6 +35,8 @@
             type="password"
             placeholder="Enter your password"
             name="password"
+            [error]="isInvalid(password!)"
+            [errorMessages]="passwordErrors()"
         >
         
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

@@ -1,7 +1,6 @@
 .group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
-
 
 .group__label {
     color: var(--clr-text-inputs);
@@ -9,19 +8,19 @@
 
 .group__content {
     width: 100%;
-    padding: .75rem;
     border: none;
     border-radius: .5rem;
     background-color: var(--clr-bg-secondary);
-    transition: outline 30ms ease;
     margin-top: .25rem;
     display: flex;
     align-items: center;
     justify-content: space-between; 
     gap: .75rem;
+    padding-inline-end: .75rem;
 }
 
 .group__content__input {
+    padding: .75rem;
     width: 100%;
     border: none;
     background-color: transparent;
@@ -37,21 +36,44 @@
     color: var(--clr-text-secondary);
 }
 
-
-
 .group__content__input:focus {
     outline: none;
 }
 
-.group__content:focus-within, 
-.group__content:hover {
+.group__content:focus-within {
     outline: 2px solid var(--clr-primary);
     outline-offset: 2px;
+    transition: all 30ms ease;
+}
+
+.group__content:hover {
+    outline: 2px solid var(--clr-primary);
+    transition: all 30ms ease;
+}
+
+.group--error .group__content,
+.group--error .group__content:hover,
+.group--error .group__content:focus {
+    outline: 2px solid var(--clr-error);
+    transition: all 50ms ease;
+}
+
+.group--error .group__label {
+    color: var(--clr-error);
+}
+
+.group--error .group__content__icon {
+    color: var(--clr-error);
 }
 
 .group__content__icon {
     display: grid;
     color: var(--clr-primary);
     place-items: center;
+}
 
+.group__error-message {
+    font-size: 12px;
+    margin-top: .5rem;
+    color: var(--clr-error);
 }

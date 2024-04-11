@@ -9,9 +9,17 @@
     --clr-text-inputs: lightgrey;
     --clr-primary: #76ABAE;
     --clr-primary--hover: rgb(129, 189, 192);
+    --clr-error: rgb(241, 101, 129);
 
 
     --ff-primary: 'Poppins', sans-serif;
+
+
+    --clr-success-rgb: 106, 224, 177;
+    --clr-error-rgb: 241, 101, 129;
+    --clr-info-rbg: 133, 180, 233;
+    --clr-warning-rgb: 253, 224, 71;
+    
 }
 
 * {
@@ -23,5 +31,4 @@
 
 body {
     background-color: var(--clr-bg);
-
 }

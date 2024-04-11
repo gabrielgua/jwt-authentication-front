@@ -1,14 +1,22 @@
-<section class="group">
+<section class="group" [ngClass]="{'group--error': error}">
     <label class="group__label" [for]="name">{{ label }}</label>
-    <div class="group__content">
+    <div class="group__content" >
         <input class="group__content__input" 
+            
             [id]="name"  
             [type]="type" 
             [value]="value" 
             [placeholder]="placeholder" 
+            (input)="onInput($event)"
         >
         <div class="group__content__icon">
             <ng-content></ng-content>
         </div>
     </div>
+
+    @if (error) {
+        @for (msg of errorMessages; track $index) {
+            <p class="group__error-message" @fadeInFromTop>{{ msg }}</p>
+        }
+    }
 </section>

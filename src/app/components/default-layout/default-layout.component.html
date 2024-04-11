@@ -15,12 +15,12 @@
             <ng-content></ng-content>
         </section>
         <section class="actions">
-            <button class="actions__button">{{ primaryBtnText }}</button>
+            <button class="actions__button" (click)="submit()" [disabled]="disablePrimaryBtn">{{ primaryBtnText }}</button>
             <div class="actions__divider">
                 <hr class="actions__bar">
                 <p class="actions__text">OR</p>
             </div>
-            <button class="actions__button actions__button--outlined">{{ secondaryBtnText }}</button>
+            <button class="actions__button actions__button--outlined" (click)="navigate()">{{ secondaryBtnText }}</button>
         </section>
     </div>
 </main>
