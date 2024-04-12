@@ -1,4 +1,4 @@
 export type AuthResponse = {
     email: string;
-    accessToken: string;
+    access_token: string;
 }

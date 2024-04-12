@@ -15,7 +15,7 @@ export class RegisterService {
   register(name: string, email: string, password: string) {
     return this.http.post<AuthResponse>(`${this.API_AUTH_URL}/register`, {name, email, password})
       .pipe(
-        tap((res) => sessionStorage.setItem('access_token', res.accessToken))
+        tap((res) => sessionStorage.setItem('access_token', res.access_token))
       );
   }
 }
