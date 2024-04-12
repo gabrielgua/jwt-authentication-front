@@ -6,7 +6,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  constructor(private tokenHelper: JwtHelperService) {}
+  constructor(private tokenHelper: JwtHelperService) {
+    if (this.isAuthenticated()) {
+      this.setToken(this.token!);
+    }
+  }
 
 
   get token() {
@@ -15,7 +19,7 @@ export class AuthService {
 
   isAuthenticated(): boolean {
      
-    return !!this.token && !this.tokenHelper.isTokenExpired(this.token);
+    return this.token != null && !this.tokenHelper.isTokenExpired(this.token);
   }
 
   setToken(token: string) {

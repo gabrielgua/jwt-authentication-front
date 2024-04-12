@@ -1,1 +1,7 @@
-<p>account works!</p>
+@if ((user$ | async); as user) {
+    <div class="user">
+        <p class="user__id">{{user.id}}</p>
+        <p class="user__name">{{user.name}}</p>
+        <p class="user__email">{{user.email}}</p>
+    </div>
+}
