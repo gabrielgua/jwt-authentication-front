@@ -11,9 +11,7 @@ export class UserService {
   API_USER_ULR = 'http://localhost:8080/users'
   private user$ = new BehaviorSubject<UserResponse>(new UserResponse());  
 
-  constructor(private http: HttpClient) { 
-    this.fetchUser();
-  }
+  constructor(private http: HttpClient) { }
 
   public getUser() {
     return this.user$.asObservable();

@@ -27,6 +27,6 @@ export class AuthService {
   }
 
   logout() {
-    sessionStorage.clear();
+    sessionStorage.removeItem('access_token');
   }
 }

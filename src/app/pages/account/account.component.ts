@@ -19,6 +19,7 @@ export class AccountComponent implements OnInit {
   user$ = new Observable<UserResponse>;
 
   ngOnInit(): void {
+    this.userService.fetchUser();
     this.user$ = this.userService.getUser();
   }
 
@@ -28,5 +29,6 @@ export class AccountComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
+
   }
 }
