@@ -1,5 +1,5 @@
-export type UserResponse = {
-    id: number;
-    name: string;
-    email: string;
+export class UserResponse {
+    id: number = 0;
+    name: string = '';
+    email: string = '';
 }

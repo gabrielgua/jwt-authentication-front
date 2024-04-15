@@ -20,4 +20,8 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.user$ = this.userService.getUser();
   }
+
+  loaded(user: UserResponse) {
+    return user.id != 0;
+  }
 }

@@ -9,7 +9,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 export class UserService {
 
   API_USER_ULR = 'http://localhost:8080/users'
-  private user$ = new BehaviorSubject<UserResponse>({id: 0, name: '', email: ''});  
+  private user$ = new BehaviorSubject<UserResponse>(new UserResponse());  
 
   constructor(private http: HttpClient) { 
     this.fetchUser();

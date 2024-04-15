@@ -1,7 +1,32 @@
 @if ((user$ | async); as user) {
-    <div class="user">
-        <p class="user__id">{{user.id}}</p>
-        <p class="user__name">{{user.name}}</p>
-        <p class="user__email">{{user.email}}</p>
-    </div>
+    <section class="user-section">
+        <div class="user">
+            <div class="user__header">
+                <h4 class="user__header__title">My Account</h4>
+                <button class="user__header__btn">
+                    <span class="user__header__btn__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                        </svg>
+                          
+                    </span>
+                    <p>Logout</p>
+                </button>
+            </div>
+            @defer (when loaded(user)) {
+                <div class="user__content">
+                    <p class="user__content__text user__content__text--accent"># {{user.id}}</p>
+                    <p class="user__content__text">Name: {{user.name}}</p>
+                    <p class="user__content__text">Email: {{user.email}}</p>
+                </div>
+            }
+            @placeholder {
+                <div class="user__placeholder">
+                    <div class="user__placeholder__item user__placeholder__item--small"></div>
+                    <div class="user__placeholder__item "></div>
+                    <div class="user__placeholder__item user__placeholder__item--large"></div>
+                </div>
+            }
+        </div>
+    </section>
 }
