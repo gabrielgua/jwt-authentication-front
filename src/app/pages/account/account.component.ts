@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { UserResponse } from '../../types/user-response.type';
 import { Observable } from 'rxjs';
 import { AsyncPipe, DatePipe } from '@angular/common';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-account',
@@ -13,7 +14,7 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 })
 export class AccountComponent implements OnInit {
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private loginService: LoginService) {}
 
   user$ = new Observable<UserResponse>;
 
@@ -23,5 +24,9 @@ export class AccountComponent implements OnInit {
 
   loaded(user: UserResponse) {
     return user.id != 0;
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 }

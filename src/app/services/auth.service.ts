@@ -25,4 +25,8 @@ export class AuthService {
   setToken(token: string) {
     sessionStorage.setItem('access_token', token);
   }
+
+  logout() {
+    sessionStorage.clear();
+  }
 }
