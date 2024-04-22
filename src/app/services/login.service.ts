@@ -4,6 +4,7 @@ import { AuthResponse } from '../types/auth-response.type';
 import { tap } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private auth: AuthService,
+    private userService: UserService,
     private router: Router
   ) { }
 
@@ -31,5 +33,8 @@ export class LoginService {
   logout() {
     this.auth.logout();
     this.router.navigate(['login']);
+    this.userService.clearState();
   }
+
+  
 }

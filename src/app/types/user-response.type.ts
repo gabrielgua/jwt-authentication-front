@@ -1,5 +1,5 @@
-export class UserResponse {
-    id: number = 0;
-    name: string = '';
-    email: string = '';
+export interface UserInterface {
+    id: number;
+    name: string;
+    email: string;
 }
