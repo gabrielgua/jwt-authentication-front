@@ -6,19 +6,19 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  constructor(private tokenHelper: JwtHelperService) {
+  tokenHelper = inject(JwtHelperService);
+
+  constructor() {
     if (this.isAuthenticated()) {
       this.setToken(this.token!);
     }
   }
-
 
   get token() {
     return sessionStorage.getItem('access_token');
   }
 
   isAuthenticated(): boolean {
-     
     return this.token != null && !this.tokenHelper.isTokenExpired(this.token);
   }
 

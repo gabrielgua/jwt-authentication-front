@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DefaultLayoutComponent } from '../../components/default-layout/default-layout.component';
@@ -20,14 +20,14 @@ import { AuthResponse } from '../../types/auth-response.type';
         MessageComponent,
     ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   error: boolean = false;
 
-  constructor(
-    private router: Router,
-    private service: LoginService,
-  ) {
+  router = inject(Router);
+  service = inject(LoginService);
+
+  ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)])

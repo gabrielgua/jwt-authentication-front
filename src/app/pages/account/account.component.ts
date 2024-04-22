@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MessageComponent } from '../../components/message/message.component';
 import { LoginService } from '../../services/login.service';
 import { UserService } from '../../services/user.service';
@@ -12,7 +12,8 @@ import { UserService } from '../../services/user.service';
 })
 export class AccountComponent implements OnInit {
 
-  constructor(public userService: UserService, private loginService: LoginService) {}
+  loginService = inject(LoginService);
+  userService = inject(UserService);
 
   ngOnInit(): void {
     this.userService.fetchUser();

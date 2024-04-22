@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AuthResponse } from '../types/auth-response.type';
 import { tap } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -13,12 +13,10 @@ export class LoginService {
 
   API_AUTH_URL = 'http://localhost:8080/auth';
 
-  constructor(
-    private http: HttpClient,
-    private auth: AuthService,
-    private userService: UserService,
-    private router: Router
-  ) { }
+  http = inject(HttpClient);
+  auth = inject(AuthService);
+  userService = inject(UserService);
+  router = inject(Router);
 
   login(email: string, password: string) {
     return this.http.post<AuthResponse>(`${this.API_AUTH_URL}/login`, {email, password})  
@@ -35,6 +33,4 @@ export class LoginService {
     this.router.navigate(['login']);
     this.userService.clearState();
   }
-
-  
 }

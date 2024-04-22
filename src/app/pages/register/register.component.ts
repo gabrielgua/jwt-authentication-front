@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DefaultLayoutComponent } from "../../components/default-layout/default-layout.component";
 import { PrimaryInputComponent } from "../../components/primary-input/primary-input.component";
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -16,7 +16,7 @@ import { MessageComponent } from "../../components/message/message.component";
     styleUrl: './register.component.css',
     imports: [DefaultLayoutComponent, PrimaryInputComponent, ReactiveFormsModule, MessageComponent]
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
     registerForm!: FormGroup;
     error: boolean = false;
@@ -25,10 +25,10 @@ export class RegisterComponent {
     success: boolean = false;
     successMessage: string = 'Your account was successfully created.';
 
-    constructor(
-        private router: Router,
-        private service: RegisterService
-    ) {
+    router = inject(Router);
+    service = inject(RegisterService);
+
+    ngOnInit(): void {
         this.registerForm = new FormGroup({
             name: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.required, Validators.email]),

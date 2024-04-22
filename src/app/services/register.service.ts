@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AuthResponse } from '../types/auth-response.type';
 import { tap } from 'rxjs';
 
@@ -9,8 +9,7 @@ import { tap } from 'rxjs';
 export class RegisterService {
 
   API_AUTH_URL = 'http://localhost:8080/auth';
-
-  constructor(private http: HttpClient) { }
+  http = inject(HttpClient);
 
   register(name: string, email: string, password: string) {
     return this.http.post<AuthResponse>(`${this.API_AUTH_URL}/register`, {name, email, password})
