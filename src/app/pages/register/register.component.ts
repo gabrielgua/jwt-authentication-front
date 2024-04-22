@@ -82,9 +82,12 @@ export class RegisterComponent implements OnInit {
     }
 
     handleError(err: HttpErrorResponse) {
-        if (err.status === 0) {
-            this.errorMessage = 'The server may be offline, try again later.';
+
+        switch(err.status) {
+            case 0: this.errorMessage = 'The server may be offline, try again later.'; break;
+            case 409: this.errorMessage = "This email is already registered."; break;
         }
+        
         this.error = !!err;
     }
 
