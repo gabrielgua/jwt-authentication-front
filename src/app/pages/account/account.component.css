@@ -70,18 +70,32 @@
 }
 
 .user__placeholder__item {
-    background-color: var(--clr-bg-secondary);
     padding: .5rem;
     border-radius: 1rem;
-    max-width: 10rem;
+    animation: pulsing 750ms ease infinite alternate;
 }
+
 
 .user__placeholder__item--small {
     max-width: 3rem;
 }
 
+.user__placeholder__item--medium {
+    max-width: 10rem;
+    animation-delay: 100ms;
+}
 .user__placeholder__item--large {
     max-width: 20rem;
+    animation-delay: 200ms;
+}
+
+@keyframes pulsing {
+    0% {
+        background-color: var(--clr-bg);
+    }
+    100% {
+        background-color: var(--clr-bg-secondary);
+    }    
 }
 
 

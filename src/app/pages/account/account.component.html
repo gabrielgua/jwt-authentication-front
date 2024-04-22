@@ -20,6 +20,7 @@
                 </button>
             }
         </div>
+
             @if (userService.getUser(); as user) {
                 <div class="user__content">
                     <p class="user__content__text user__content__text--accent"># {{user.id}}</p>
@@ -32,7 +33,7 @@
             @if (loading()) {
                 <div class="user__placeholder">
                     <div class="user__placeholder__item user__placeholder__item--small"></div>
-                    <div class="user__placeholder__item "></div>
+                    <div class="user__placeholder__item user__placeholder__item--medium"></div>
                     <div class="user__placeholder__item user__placeholder__item--large"></div>
                 </div>
             }
