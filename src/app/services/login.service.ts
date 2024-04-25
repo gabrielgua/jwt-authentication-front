@@ -5,14 +5,14 @@ import { tap } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
-import { environment } from '../environments/environment.prod';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  API_AUTH_URL = environment.API_URL;
+  API_AUTH_URL = `${environment.API_URL}/auth`;
 
   http = inject(HttpClient);
   auth = inject(AuthService);
