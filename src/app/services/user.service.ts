@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { UserInterface } from '../types/user-response.type';
+import { environment } from '../environments/environment.prod';
 
 export interface UserState {
   user: UserInterface | undefined | null,
@@ -13,7 +14,7 @@ export interface UserState {
 })
 export class UserService {
 
-  API_USER_ULR = 'http://localhost:8080/users'
+  API_USER_ULR = `${environment.API_URL}/users`
   private userSig = signal<UserInterface | undefined | null>(undefined);
 
   private state = signal<UserState>({

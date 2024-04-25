@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { AuthResponse } from '../types/auth-response.type';
 import { tap } from 'rxjs';
+import { environment } from '../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
 
-  API_AUTH_URL = 'http://localhost:8080/auth';
+  API_AUTH_URL = environment.API_URL;
   http = inject(HttpClient);
 
   register(name: string, email: string, password: string) {
