@@ -11,8 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "custoWebpackConfig": {
+              "path": "src/custom-webpack.config.ts"
+            },
             "outputPath": "dist/jwt-authentication",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -41,7 +44,15 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
-                }
+                },
+                {
+                  "fileReplacements": [
+                    {
+                      "replace": "src/environments/environment.ts",
+                      "with": "src/environments/environment.prod.ts"
+                    }
+                  ]}
+                
               ],
               "outputHashing": "all"
             },
@@ -54,7 +65,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "jwt-authentication:build:production"

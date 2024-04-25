@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { UserInterface } from '../types/user-response.type';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 export interface UserState {
   user: UserInterface | undefined | null,
