@@ -10,18 +10,10 @@
 >
     <form [formGroup]="loginForm">
         <app-message 
-            class="error" 
+            [class]="feedback.type"
             type="icon-only" 
-            [text]="errorMessage" 
-            [show]="true">
-        </app-message>
-
-        <app-message
-            class="info"
-            type="icon-only"
-            text="The server is waking up. This may take a while"
-            [show]="true"
-        >
+            [text]="feedback.message" 
+            [show]="feedback.show">
         </app-message>
 
         <app-primary-input
