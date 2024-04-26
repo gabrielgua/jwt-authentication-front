@@ -3,10 +3,9 @@
     [primaryBtnText]="'Login now'"
     [secondaryBtnText]="'Create an account'"
     [disablePrimaryBtn]="loginForm.invalid"
+    [loading]="loading"
     (submit)="submit()"
     (navigate)="navigate()"
-    
-
 >
     <form [formGroup]="loginForm">
         <app-message 

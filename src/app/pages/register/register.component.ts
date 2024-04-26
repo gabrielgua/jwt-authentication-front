@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
     registerForm!: FormGroup;
     error: boolean = false;
     errorMessage: string = '';
+    loading: boolean = false;
 
     success: boolean = false;
     successMessage: string = 'Your account was successfully created.';
@@ -67,7 +68,7 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
-
+        this.setIsLoading(true);
         this.service.register(this.registerForm.value.name, this.registerForm.value.email, this.registerForm.value.password).subscribe({
             next: (res) => this.handleSuccess(res),
             error: (err) => this.handleError(err)
@@ -76,12 +77,18 @@ export class RegisterComponent implements OnInit {
         this.resetForm();
     }
 
-    handleSuccess(res: AuthResponse) {
-        this.success = true;
-        console.log(res);
+    private setIsLoading(loading: boolean) {
+        this.loading = loading;
     }
 
-    handleError(err: HttpErrorResponse) {
+    private handleSuccess(res: AuthResponse) {
+        this.success = true;
+        this.setIsLoading(false);
+        console.log('User registered with success.');
+    }
+
+
+    private handleError(err: HttpErrorResponse) {
 
         switch(err.status) {
             case 0: this.errorMessage = 'The server may be offline, try again later.'; break;
@@ -89,6 +96,7 @@ export class RegisterComponent implements OnInit {
             default: this.errorMessage = "The server is waking up, try again in a few seconds."; break;
         }
         
+        this.setIsLoading(false);
         this.error = !!err;
     }
 

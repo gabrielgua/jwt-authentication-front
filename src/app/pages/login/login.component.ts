@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     type: 'error',
     show: false,
   }
+  loading = false;
 
   router = inject(Router);
   service = inject(LoginService);
@@ -60,9 +61,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.setIsLoading(true);
     this.service.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: (response) => this.handleSuccess(response),
-      error: (err) => this.handleError(err)
+      error: (err) => this.handleError(err),
     }); 
     
     this.resetForm();
@@ -85,13 +87,17 @@ export class LoginComponent implements OnInit {
     this.feedback.type = type;
   }
 
-
-  private handleSuccess(response: AuthResponse) {
-    console.log('Login feito com sucesso');
-    console.log(response);    
+  private setIsLoading(loading: boolean) {
+    this.loading = loading;
   }
 
-  handleError(err: HttpErrorResponse) {
+
+  private handleSuccess(response: AuthResponse) {
+    this.setIsLoading(false);
+    console.log('Login feito com sucesso');
+  }
+
+  private handleError(err: HttpErrorResponse) {
 
     switch(err.status) {
         case 0: 
@@ -109,13 +115,12 @@ export class LoginComponent implements OnInit {
           break;
     }
     
+    this.setIsLoading(false);
     this.setShow(!!err);
-
 }
 
   private resetForm() {
     this.password?.reset();
-    
   }
 
   navigate() {

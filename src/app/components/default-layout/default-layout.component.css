@@ -55,6 +55,9 @@ main {
     align-items: center;
     flex-direction: column;
     gap: 1rem;
+    position: relative;
+    overflow: hidden;
+
 
     border: 1px solid var(--clr-bg-secondary);
     box-shadow: rgba(0, 0, 0, .1) 0 0 29px 0;
@@ -128,6 +131,20 @@ main {
     padding-inline: 1rem;
     z-index: 1;
     font-size: small;
+}
+
+.spinner {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    background-color: #2228316e;
+    backdrop-filter: blur(.175rem);
+    
+    z-index: 99;
 }
 
 

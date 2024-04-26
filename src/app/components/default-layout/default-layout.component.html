@@ -9,18 +9,24 @@
 
         <p class="header__subtitle">JWT authentication example, made with Spring Boot and Angular.</p>
     </section>
-    <div class="form__wrapper">
+    <div class="form__wrapper" [ngClass]="{'form__wrapper--loading': loading}">
         <section class="form">
             <p class="form__title">{{ title }}</p>
             <ng-content></ng-content>
         </section>
         <section class="actions">
-            <button class="actions__button" (click)="submit()" [disabled]="disablePrimaryBtn">{{ primaryBtnText }}</button>
+            <button class="actions__button" (click)="submit()" [disabled]="disablePrimaryBtn || loading">{{ primaryBtnText }}</button>
             <div class="actions__divider">
                 <hr class="actions__bar">
                 <p class="actions__text">OR</p>
             </div>
             <button class="actions__button actions__button--outlined" (click)="navigate()">{{ secondaryBtnText }}</button>
         </section>
+
+        @if (loading) {
+            <div class="spinner">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+        }
     </div>
 </main>
