@@ -29,7 +29,7 @@ export class MessageComponent {
   }
 
   close() {
-  this.show = false;
+    this.show = false;
   }
 
   getTitle(): string {

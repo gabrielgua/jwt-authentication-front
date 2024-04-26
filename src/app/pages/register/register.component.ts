@@ -86,6 +86,7 @@ export class RegisterComponent implements OnInit {
         switch(err.status) {
             case 0: this.errorMessage = 'The server may be offline, try again later.'; break;
             case 409: this.errorMessage = "This email is already registered."; break;
+            default: this.errorMessage = "The server is waking up, try again in a few seconds."; break;
         }
         
         this.error = !!err;

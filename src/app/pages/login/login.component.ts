@@ -6,6 +6,7 @@ import { MessageComponent } from "../../components/message/message.component";
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { LoginService } from '../../services/login.service';
 import { AuthResponse } from '../../types/auth-response.type';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-login',
@@ -23,6 +24,7 @@ import { AuthResponse } from '../../types/auth-response.type';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   error: boolean = false;
+  errorMessage: string = '';
 
   router = inject(Router);
   service = inject(LoginService);
@@ -63,10 +65,16 @@ export class LoginComponent implements OnInit {
     console.log(response);    
   }
 
-  private handleError(err: Error) {
+  handleError(err: HttpErrorResponse) {
+
+    switch(err.status) {
+        case 0: this.errorMessage = 'The server may be offline, try again later.'; break;
+        case 409: this.errorMessage = "This email is already registered."; break;
+        default: this.errorMessage = "The server is waking up, try again in a few seconds."; break;
+    }
+    
     this.error = !!err;
-    this.resetForm();
-  }
+}
 
   private resetForm() {
     this.password?.reset();

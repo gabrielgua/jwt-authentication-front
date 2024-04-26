@@ -12,8 +12,16 @@
         <app-message 
             class="error" 
             type="icon-only" 
-            text="Incorrect credentials, plase check and try again." 
-            [show]="error">
+            [text]="errorMessage" 
+            [show]="true">
+        </app-message>
+
+        <app-message
+            class="info"
+            type="icon-only"
+            text="The server is waking up. This may take a while"
+            [show]="true"
+        >
         </app-message>
 
         <app-primary-input
